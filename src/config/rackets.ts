@@ -60,7 +60,7 @@ export const rackets: Racket[] = [
   },
   {
     id: '2',
-    name: 'D-100ZZ',
+    name: 'LD-100ZZ',
     brand: 'OGKILS',
     x: 51,
     y: 22,
