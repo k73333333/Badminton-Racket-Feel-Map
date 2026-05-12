@@ -78,7 +78,7 @@
       <h3>关于这个项目</h3>
       <p>这是一个羽毛球拍打感分布图项目</p>
       <p>源码地址：<a href="https://github.com/k73333333/Badminton-Racket-Feel-Map" target="_blank">https://github.com/k73333333/Badminton-Racket-Feel-Map</a></p>
-      <p>如有问题或建议，可以在 GitHub 上提交 Issue，或者直接联系我。如果你需要二次开发或者使用直接去源码地址Fork即可</p>
+      <p>如有问题或建议，可以在 GitHub 上提交 Issue，或者直接联系我。如果你需要二次开发或者使用直接去源码地址Fork或者提个PR即可</p>
       <button class="modal-close" @click="showModal = false">关闭</button>
     </div>
   </div>
