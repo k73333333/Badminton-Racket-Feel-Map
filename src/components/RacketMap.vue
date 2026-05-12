@@ -66,7 +66,20 @@
         <button class="zoom-btn reset-btn" @click="resetZoom" title="重置">
           <span>⟲</span>
         </button>
+        <button class="zoom-btn info-btn" @click="showSecretMessage" title="关于">
+          <span>i</span>
+        </button>
       </div>
+    </div>
+  </div>
+  
+  <div v-if="showModal" class="modal-overlay" @click="showModal = false">
+    <div class="modal-content" @click.stop>
+      <h3>关于这个项目</h3>
+      <p>这是一个羽毛球拍打感分布图项目</p>
+      <p>源码地址：<a href="https://github.com/k73333333/Badminton-Racket-Feel-Map" target="_blank">https://github.com/k73333333/Badminton-Racket-Feel-Map</a></p>
+      <p>如有问题或建议，可以在 GitHub 上提交 Issue，或者直接联系我。如果你需要二次开发或者使用直接去源码地址Fork即可</p>
+      <button class="modal-close" @click="showModal = false">关闭</button>
     </div>
   </div>
 </template>
@@ -79,6 +92,7 @@ const minScale = 0.5;
 const maxScale = 3;
 const scaleStep = 0.1;
 const hoveredRacketId = ref<string | null>(null);
+const showModal = ref(false);
 
 const translateX = ref(0);
 const translateY = ref(0);
@@ -164,6 +178,10 @@ const handleMouseUp = () => {
   handleDragEnd();
   document.removeEventListener('mousemove', handleMouseMove);
   document.removeEventListener('mouseup', handleMouseUp);
+};
+
+const showSecretMessage = () => {
+  showModal.value = true;
 };
 
 const currentScale = computed(() => Math.round(scale.value * 100));
@@ -283,7 +301,57 @@ body {
   cursor: grabbing;
 }
 
-@media (max-width: 480px) and (orientation: portrait) {
+.modal-content {
+  background: white;
+  border-radius: 0.2rem;
+  padding: 0.4rem;
+  max-width: 80%;
+  max-height: 80%;
+  text-align: center;
+  animation: slideUp 0.3s ease;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.modal-content h3 {
+  margin: 0 0 0.2rem 0;
+  color: #333;
+  font-size: 0.24rem;
+}
+
+.modal-content p {
+  margin: 0.1rem 0;
+  color: #666;
+  font-size: 0.16rem;
+  line-height: 1.5;
+}
+
+.modal-content a {
+  color: #00B5B8;
+  text-decoration: none;
+}
+
+.modal-content a:hover {
+  text-decoration: underline;
+}
+
+.modal-close {
+  margin-top: 0.3rem;
+  padding: 0.1rem 0.3rem;
+  border: none;
+  border-radius: 0.08rem;
+  background: linear-gradient(135deg, #00B5B8 0%, #009698 100%);
+  color: white;
+  font-size: 0.16rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 750px) and (orientation: portrait) {
   .racket-map-container {
     padding: 0.2rem;
     padding-top: 1.6rem;
@@ -357,9 +425,32 @@ body {
   .frame-oval {
     border-width: 0.06rem;
   }
+  
+  .modal-content {
+    padding: 0.6rem;
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
+  .modal-content h3 {
+    font-size: 0.5rem;
+    margin-bottom: 0.45rem;
+  }
+  
+  .modal-content p {
+    font-size: 0.33rem;
+    margin: 0.3rem 0;
+    line-height: 1.7;
+  }
+  
+  .modal-close {
+    font-size: 0.33rem;
+    padding: 0.18rem 0.5rem;
+    margin-top: 0.45rem;
+  }
 }
 
-@media (max-width: 480px) and (orientation: landscape) {
+@media (max-width: 750px) and (orientation: landscape) {
   .racket-map-container {
     padding: 0.2rem;
   }
@@ -429,6 +520,29 @@ body {
   
   .frame-oval {
     border-width: 0.06rem;
+  }
+  
+  .modal-content {
+    padding: 0.6rem;
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
+  .modal-content h3 {
+    font-size: 0.5rem;
+    margin-bottom: 0.45rem;
+  }
+  
+  .modal-content p {
+    font-size: 0.33rem;
+    margin: 0.3rem 0;
+    line-height: 1.7;
+  }
+  
+  .modal-close {
+    font-size: 0.33rem;
+    padding: 0.18rem 0.5rem;
+    margin-top: 0.45rem;
   }
 }
 
@@ -715,5 +829,45 @@ body {
 
 .reset-btn {
   font-size: 0.16rem;
+}
+
+.info-btn {
+  font-size: 0.16rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(0.2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

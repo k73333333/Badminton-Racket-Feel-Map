@@ -1,5 +1,91 @@
-# Vue 3 + Vite
+# 羽毛球拍打感分布图 (Badminton Racket Feel Map)
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+这是一个基于 Vue 3 + Vite 开发的羽毛球拍打感分布可视化项目。通过坐标系直观地展示不同型号羽毛球拍在“手感”与“拍头重量”两个维度上的分布情况。
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## 坐标系说明
+
+项目使用一个二维坐标系来定位球拍的特性：
+
+### 水平轴 (X轴)：手感 (Feel)
+- **数值范围**：0 - 100
+- **0 (左侧)**：代表手感极其**柔和** (Soft)
+- **100 (右侧)**：代表手感极其**扎实/硬弹** (Solid/Stiff)
+
+### 垂直轴 (Y轴)：拍头重量 (Head Weight)
+- **数值范围**：0 - 100
+- **0 (顶部)**：代表**头重** (Head Heavy)，适合进攻
+- **100 (底部)**：代表**头轻** (Head Light)，适合防守和速度
+
+## 数据配置指南
+
+所有的球拍数据都存储在 `src/config/rackets.ts` 文件中。
+
+### 数据结构
+
+每个球拍对象包含以下属性：
+
+| 属性 | 类型 | 说明 |
+| :--- | :--- | :--- |
+| `id` | `string` | 唯一标识符，建议保持连续递增 |
+| `name` | `string` | 球拍型号名称 (如: "LD-700") |
+| `brand` | `string` | 品牌名称 |
+| `x` | `number` | X轴坐标 (0-100)，对应手感从柔和到扎实 |
+| `y` | `number` | Y轴坐标 (0-100)，对应拍头从重到轻 |
+| `color` | `string` | 标记点的背景颜色 (十六进制，如: "#FFFFFF") |
+
+### 如何添加新球拍
+
+1. 打开 [rackets.ts](src/config/rackets.ts) 文件。
+2. 在 `rackets` 数组中添加一个新的对象：
+
+```typescript
+{
+  id: '18',
+  name: '新球拍型号',
+  brand: '品牌名',
+  x: 50, // 位于中心
+  y: 50, // 位于中心
+  color: '#FF5733'
+}
+```
+
+3. 保存文件，页面会自动刷新显示新的标记点。
+
+## 互动功能
+
+为了更好的查看细节，项目集成了以下互动功能：
+
+- **平滑缩放**：
+  - **PC端**：使用鼠标滚轮，或点击右上角的 `+` / `−` 按钮。
+  - **移动端**：使用双指捏合手势进行缩放。
+- **拖拽平移**：
+  - **PC端**：按住鼠标左键即可拖拽地图。
+  - **移动端**：单指触摸并滑动即可平移地图。
+- **重置视图**：点击右上角的重置按钮 `⟲` 可快速恢复到初始缩放和位置。
+- **详细信息**：点击 `i` 按钮可以查看关于项目的更多信息。
+
+## 技术实现
+
+- **Vue 3 (Composition API)**: 核心框架。
+- **Vite**: 构建工具。
+- **TypeScript**: 类型安全。
+- **CSS3 Transform**: 实现平滑的缩放与平移功能。
+- **响应式设计**: 适配桌面端与移动端（支持触摸缩放和拖拽）。
+
+## 开发与部署
+
+### 安装依赖
+```bash
+npm install
+```
+
+### 本地开发
+```bash
+npm run dev
+```
+
+### 构建发布
+```bash
+npm run build
+```
+构建产物将输出到 `docs` 目录，方便在 GitHub Pages 等平台直接部署。
