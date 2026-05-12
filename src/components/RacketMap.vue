@@ -110,10 +110,6 @@ const handleDragMove = (clientX: number, clientY: number) => {
 const handleDragEnd = () => {
   touchStartDistance = 0;
   isDragging = false;
-  if (scale.value <= 1) {
-    translateX.value = 0;
-    translateY.value = 0;
-  }
 };
 
 const handleTouchStart = (event: TouchEvent) => {
@@ -131,7 +127,7 @@ const handleTouchStart = (event: TouchEvent) => {
 };
 
 const handleTouchMove = (event: TouchEvent) => {
-  if (event.touches.length === 1 && isDragging && scale.value > 1) {
+  if (event.touches.length === 1 && isDragging) {
     event.preventDefault();
     handleDragMove(event.touches[0].clientX, event.touches[0].clientY);
   } else if (event.touches.length === 2 && touchStartDistance > 0) {
@@ -289,8 +285,8 @@ body {
 
 @media (max-width: 480px) and (orientation: portrait) {
   .racket-map-container {
-    padding: 0.1rem;
-    padding-top: 0.8rem;
+    padding: 0.2rem;
+    padding-top: 1.6rem;
   }
   
   .map-title {
@@ -298,10 +294,10 @@ body {
     text-orientation: mixed;
     position: fixed;
     left: 50%;
-    top: 0.15rem;
+    top: 0.3rem;
     transform: translateX(-50%);
-    font-size: 0.18rem;
-    margin-bottom: 0.15rem;
+    font-size: 0.36rem;
+    margin-bottom: 0.3rem;
     order: -1;
   }
   
@@ -314,16 +310,16 @@ body {
   }
   
   .map {
-    max-width: 3.2rem;
+    max-width: 6.4rem;
   }
   
   .racket-circle {
-    width: 0.4rem;
-    height: 0.4rem;
+    width: 1.1rem;
+    height: 1.1rem;
   }
   
   .racket-name {
-    font-size: 0.09rem;
+    font-size: 0.22rem;
   }
   
   .axis-label-left,
@@ -332,50 +328,50 @@ body {
   }
   
   .axis-label-top {
-    font-size: 0.14rem;
-    top: -0.3rem;
+    font-size: 0.28rem;
+    top: -0.6rem;
   }
   
   .axis-label-bottom {
-    font-size: 0.14rem;
+    font-size: 0.28rem;
     bottom: 12%;
   }
   
   .zoom-controls {
-    top: 0.6rem;
-    right: 0.1rem;
-    padding: 0.08rem;
+    top: 1.2rem;
+    right: 0.2rem;
+    padding: 0.16rem;
   }
   
   .zoom-btn {
-    width: 0.35rem;
-    height: 0.35rem;
-    font-size: 0.16rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    font-size: 0.32rem;
   }
   
   .zoom-display {
-    font-size: 0.12rem;
-    padding: 0.04rem 0.08rem;
+    font-size: 0.24rem;
+    padding: 0.08rem 0.16rem;
   }
   
   .frame-oval {
-    border-width: 0.03rem;
+    border-width: 0.06rem;
   }
 }
 
 @media (max-width: 480px) and (orientation: landscape) {
   .racket-map-container {
-    padding: 0.1rem;
+    padding: 0.2rem;
   }
   
   .map-title {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     position: fixed;
-    left: 0.1rem;
+    left: 0.2rem;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 0.16rem;
+    font-size: 0.32rem;
   }
   
   .map-wrapper {
@@ -383,20 +379,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 0.6rem;
+    margin-left: 1.2rem;
   }
   
   .map {
-    max-width: 3.2rem;
+    max-width: 6.4rem;
   }
   
   .racket-circle {
-    width: 0.4rem;
-    height: 0.4rem;
+    width: 1.1rem;
+    height: 1.1rem;
   }
   
   .racket-name {
-    font-size: 0.09rem;
+    font-size: 0.22rem;
   }
   
   .axis-label-left,
@@ -405,34 +401,34 @@ body {
   }
   
   .axis-label-top {
-    font-size: 0.14rem;
-    top: -0.3rem;
+    font-size: 0.28rem;
+    top: -0.6rem;
   }
   
   .axis-label-bottom {
-    font-size: 0.14rem;
+    font-size: 0.28rem;
     bottom: 12%;
   }
   
   .zoom-controls {
-    top: 0.1rem;
-    right: 0.1rem;
-    padding: 0.08rem;
+    top: 0.2rem;
+    right: 0.2rem;
+    padding: 0.16rem;
   }
   
   .zoom-btn {
-    width: 0.35rem;
-    height: 0.35rem;
-    font-size: 0.16rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    font-size: 0.32rem;
   }
   
   .zoom-display {
-    font-size: 0.12rem;
-    padding: 0.04rem 0.08rem;
+    font-size: 0.24rem;
+    padding: 0.08rem 0.16rem;
   }
   
   .frame-oval {
-    border-width: 0.03rem;
+    border-width: 0.06rem;
   }
 }
 
