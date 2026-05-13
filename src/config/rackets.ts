@@ -6,7 +6,9 @@
  * @property {string} brand - 品牌名称
  * @property {number} x - 在坐标系中的水平位置（0-100）
  * @property {number} y - 在坐标系中的垂直位置（0-100）
- * @property {string} color - 球拍标记颜色（十六进制）
+ * @property {string} color - 球拍标记背景颜色（十六进制）
+ * @property {string} fontColor - 球拍名称字体颜色（十六进制）
+ * @property {string} [url] - 球拍详情链接（可选）
  * 
  * @description 坐标系说明：
  * - 水平轴（X轴）：从左到右，手感从柔和到扎实
@@ -20,6 +22,8 @@ export interface Racket {
   x: number;
   y: number;
   color: string;
+  fontColor: string;
+  url?: string;
 }
 
 /**
@@ -31,23 +35,15 @@ export interface Racket {
  * - brand: 品牌名称
  * - x: 水平位置，范围 0-100，对应手感从柔和(左)到扎实(右)
  * - y: 垂直位置，范围 0-100，对应拍头从重(上)到轻(下)
- * - color: 标记颜色，使用十六进制颜色值
+ * - color: 标记背景颜色，使用十六进制颜色值
+ * - fontColor: 字体颜色，使用十六进制颜色值
+ * - url: 球拍详情链接，可选字段
  * 
  * 添加新球拍：
  * 1. 在数组末尾添加新对象
  * 2. 确保 id 唯一且连续
  * 3. 根据球拍特性设置 x/y 位置
- * 4. 选择合适的颜色
- * 
- * 示例：
- * {
- *   id: '18',
- *   name: '新球拍',
- *   brand: 'OGKILS',
- *   x: 50,
- *   y: 50,
- *   color: '#FF5733'
- * }
+ * 4. 选择合适的背景色和字体色
  */
 export const rackets: Racket[] = [
   {
@@ -56,7 +52,9 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 40,
     y: 25,
-    color: '#C41E3A'
+    color: '#C41E3A',
+    fontColor: '#FFFFFF',
+    url: '123'
   },
   {
     id: '2',
@@ -64,7 +62,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 51,
     y: 22,
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    fontColor: '#333333'
   },
   {
     id: '3',
@@ -72,7 +71,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 62,
     y: 18,
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    fontColor: '#333333'
   },
   {
     id: '4',
@@ -80,7 +80,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 65,
     y: 21,
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    fontColor: '#333333'
   },
   {
     id: '5',
@@ -88,7 +89,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 45,
     y: 28,
-    color: '#5B2C6F'
+    color: '#5B2C6F',
+    fontColor: '#FFFFFF'
   },
   {
     id: '6',
@@ -96,7 +98,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 28,
     y: 31,
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    fontColor: '#333333'
   },
   {
     id: '7',
@@ -104,7 +107,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 35,
     y: 38,
-    color: '#3498DB'
+    color: '#3498DB',
+    fontColor: '#FFFFFF'
   },
   {
     id: '8',
@@ -112,7 +116,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 50,
     y: 41,
-    color: '#1E8449'
+    color: '#1E8449',
+    fontColor: '#FFFFFF'
   },
   {
     id: '9',
@@ -120,7 +125,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 60,
     y: 38,
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    fontColor: '#333333'
   },
   {
     id: '10',
@@ -128,7 +134,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 72,
     y: 38,
-    color: '#1B4F72'
+    color: '#1B4F72',
+    fontColor: '#FFFFFF'
   },
   {
     id: '11',
@@ -136,7 +143,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 32,
     y: 46,
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    fontColor: '#333333'
   },
   {
     id: '12',
@@ -144,7 +152,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 62,
     y: 51,
-    color: '#27AE60'
+    color: '#27AE60',
+    fontColor: '#FFFFFF'
   },
   {
     id: '13',
@@ -152,7 +161,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 22,
     y: 51,
-    color: '#E91E63'
+    color: '#E91E63',
+    fontColor: '#FFFFFF'
   },
   {
     id: '14',
@@ -160,7 +170,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 42,
     y: 54,
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    fontColor: '#333333'
   },
   {
     id: '15',
@@ -168,7 +179,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 40,
     y: 64,
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    fontColor: '#333333'
   },
   {
     id: '16',
@@ -176,7 +188,8 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 75,
     y: 56,
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    fontColor: '#333333'
   },
   {
     id: '17',
@@ -184,6 +197,7 @@ export const rackets: Racket[] = [
     brand: 'OGKILS',
     x: 55,
     y: 34,
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    fontColor: '#333333'
   }
 ];
